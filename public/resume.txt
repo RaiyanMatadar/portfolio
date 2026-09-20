@@ -1,0 +1,18 @@
+Raiyan Matadar
+Full Stack Web Developer
+
+Profile
+I build responsive and scalable web applications using React, Node.js, Express, and MongoDB.
+
+Core skills
+- Frontend: HTML, CSS, JavaScript, TypeScript, React.js, Tailwind CSS
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Additional exposure: PHP, Laravel, C, C++, Bootstrap
+- Tools: Git, GitHub, VS Code, REST APIs, JWT, Cloudinary, Firebase
+
+Portfolio
+- GitHub: https://github.com/yourusername
+- LinkedIn: https://www.linkedin.com/in/yourusername
+
+This is a placeholder resume file. Replace with the actual resume before deployment.
