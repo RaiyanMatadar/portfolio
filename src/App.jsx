@@ -53,6 +53,7 @@ function App() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState({ type: 'idle', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const updateField = (event) => {
     const { name, value } = event.target
@@ -80,7 +81,7 @@ function App() {
     return nextErrors
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const nextErrors = validateForm()
 
@@ -90,12 +91,50 @@ function App() {
       return
     }
 
-    setStatus({
-      type: 'success',
-      message: 'Thanks for reaching out — your message is ready to send via your preferred email client.',
-    })
-    setFormData({ name: '', email: '', message: '' })
-    setErrors({})
+    setIsSubmitting(true)
+    setStatus({ type: 'idle', message: '' })
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${siteConfig.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio enquiry from ${formData.name}`,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      const result = await response.json()
+
+      if (result.success !== 'true') {
+        throw new Error('Email service rejected the submission')
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Thanks for reaching out — your message has been sent successfully.',
+      })
+      setFormData({ name: '', email: '', message: '' })
+      setErrors({})
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Something went wrong while sending your message. Please try again or email me directly.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -422,9 +461,10 @@ function App() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[#181510] transition hover:bg-[var(--accent-soft)]"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[#181510] transition hover:bg-[var(--accent-soft)] disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
 
                 {status.type !== 'idle' ? (
