@@ -3,8 +3,7 @@ const projects = [
     title: 'Chef Claude',
     description:
       'An AI-powered recipe application that generates recipes from user-provided ingredients using React, the Groq API, and LLaMA 3.3-70B.',
-    image:
-      'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/projects/chef-claude.png',
     technologies: [
       'React 19',
       'Vite',
@@ -30,8 +29,7 @@ const projects = [
     title: 'Meme Generator',
     description:
       'A responsive React web application that uses the Imgflip API to provide access to more than 1,000 meme templates and generate custom memes.',
-    image:
-      'https://images.unsplash.com/photo-1611605698335-8b1569810432?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/projects/meme-generator.png',
     technologies: [
       'React 19',
       'Vite',
@@ -59,8 +57,7 @@ const projects = [
     title: 'Payroll Management System',
     description:
       'A full-stack payroll management application for managing companies, employees, salary templates, payslips, payroll calculations, and payroll history.',
-    image:
-      'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/projects/payroll-system.png',
     technologies: [
       'React',
       'Vite',
@@ -76,7 +73,7 @@ const projects = [
       'Cloudinary',
     ],
     githubUrl: 'https://github.com/RaiyanMatadar/payslipSync',
-    liveUrl: 'https://client-nu-coral.vercel.app/login',
+    liveUrl: 'https://client-nu-coral.vercel.app/',
     featured: true,
     features: [
       'Company and employee management',
