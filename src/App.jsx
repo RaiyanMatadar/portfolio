@@ -99,70 +99,95 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <Navbar />
 
-      <main>
+      <main className="overflow-x-hidden">
         <section id="home" className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_30%)]" aria-hidden="true" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(circle at 16% 15%, rgba(216,141,90,0.2), transparent 24%), radial-gradient(circle at 82% 12%, rgba(148,170,160,0.14), transparent 20%)',
+            }}
+            aria-hidden="true"
+          />
+
           <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-16 sm:px-6 lg:px-8 lg:pb-24 lg:pt-20">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-emerald-300">
-                Available for work
-              </div>
+            <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-xl lg:max-w-[42rem]">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[var(--ring)] bg-[rgba(216,141,90,0.08)] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.24em] text-[var(--accent-soft)]">
+                  Available for work
+                </div>
 
-              <h1 className="mt-8 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
-                Hi, I&apos;m <span className="text-emerald-300">Raiyan Matadar</span>.
-              </h1>
+                <h1 className="mt-8 text-4xl font-semibold tracking-[-0.06em] text-[var(--text)] sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
+                  Hi, I&apos;m <span className="text-[var(--accent-soft)]">Raiyan Matadar</span>.
+                </h1>
 
-              <p className="mt-6 max-w-2xl text-xl font-medium text-slate-300 sm:text-2xl">
-                Full Stack Web Developer
-              </p>
+                <p className="mt-6 text-xl font-medium text-[var(--text-soft)] sm:text-2xl">
+                  Full Stack Web Developer
+                </p>
 
-              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                {siteConfig.intro}
-              </p>
+                <p className="mt-5 max-w-lg text-base leading-8 text-[var(--text-soft)] sm:text-lg">
+                  {siteConfig.intro}
+                </p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-3 text-sm font-medium text-slate-950 transition hover:bg-emerald-400"
-                >
-                  View Projects
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-5 py-3 text-sm font-medium text-white transition hover:border-emerald-400 hover:text-emerald-300"
-                >
-                  Contact Me
-                </a>
-                <a
-                  href={siteConfig.resumeUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-700 px-5 py-3 text-sm font-medium text-slate-200 transition hover:border-emerald-400 hover:text-emerald-300"
-                >
-                  <Download className="h-4 w-4" />
-                  Download Resume
-                </a>
-              </div>
-
-              <div className="mt-10 flex flex-wrap items-center gap-4 text-sm text-slate-300">
-                {socialLinkItems.map(({ label, href, icon: Icon }) => (
+                <div className="mt-8 flex flex-wrap items-center gap-4">
                   <a
-                    key={label}
-                    href={href}
-                    target={href.startsWith('http') ? '_blank' : undefined}
-                    rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/60 px-3 py-2 transition hover:border-emerald-400 hover:text-emerald-300"
+                    href="#projects"
+                    className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[#181510] transition hover:bg-[var(--accent-soft)]"
                   >
-                    <Icon className="h-4 w-4" />
-                    {label}
+                    View Projects
+                    <ArrowRight className="h-4 w-4" />
                   </a>
-                ))}
-              </div>
-            </motion.div>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel)] px-5 py-3 text-sm font-medium text-[var(--text)] transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]"
+                  >
+                    Contact Me
+                  </a>
+                  <a
+                    href={siteConfig.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[transparent] px-5 py-3 text-sm font-medium text-[var(--text-soft)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download Resume
+                  </a>
+                </div>
+
+                <div className="mt-10 flex flex-wrap items-center gap-3 text-sm text-[var(--text-soft)]">
+                  {socialLinkItems.map(({ label, href, icon: Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target={href.startsWith('http') ? '_blank' : undefined}
+                      rel={href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel)] px-3 py-2 transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]"
+                    >
+                      <Icon className="h-4 w-4" />
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} className="flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-[420px]">
+                  <div className="absolute -inset-4 rounded-[2rem] bg-[rgba(216,141,90,0.08)] blur-2xl" aria-hidden="true" />
+                  <div className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--panel)] p-3 shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1">
+                    <div className="overflow-hidden rounded-[1.4rem] border border-[rgba(255,255,255,0.05)] bg-[var(--panel-soft)]">
+                      <img
+                        src="/images/profile.png"
+                        alt="Raiyan Matadar portrait"
+                        className="h-[420px] w-full object-cover object-center transition duration-500 hover:scale-[1.02] sm:h-[500px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -174,11 +199,11 @@ function App() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_0.9fr]">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
-              <p className="text-base leading-8 text-slate-300">
+            <div className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] p-6 sm:p-8">
+              <p className="text-base leading-8 text-[var(--text-soft)]">
                 {siteConfig.about}
               </p>
-              <p className="mt-6 text-base leading-8 text-slate-300">
+              <p className="mt-6 text-base leading-8 text-[var(--text-soft)]">
                 My focus is on building web apps that are responsive, maintainable, and grounded in real user needs. I enjoy the full flow of modern product development: understanding the problem, shaping the UI, wiring the API, and keeping the data model structured.
               </p>
             </div>
@@ -190,8 +215,8 @@ function App() {
                 'MongoDB-backed data layers',
                 'Authentication and authorization',
               ].map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-slate-200">
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">
+                <div key={item} className="flex items-center gap-3 rounded-[1.1rem] border border-[var(--border)] bg-[var(--panel)] p-4 text-[var(--text-soft)]">
+                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[rgba(216,141,90,0.12)] text-[var(--accent-soft)]">
                     <ArrowRight className="h-4 w-4" />
                   </span>
                   <span>{item}</span>
@@ -201,7 +226,7 @@ function App() {
           </div>
         </section>
 
-        <section id="skills" className="border-y border-slate-800 bg-slate-900/40 py-20">
+        <section id="skills" className="border-y border-[var(--border)] bg-[var(--panel-soft)] py-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
             <SectionHeading
               eyebrow="Skills"
@@ -211,13 +236,13 @@ function App() {
 
             <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {skillGroups.map((group) => (
-                <div key={group.title} className="rounded-2xl border border-slate-800 bg-slate-950/50 p-5 shadow-glow">
-                  <h3 className="mb-4 text-lg font-semibold text-white">{group.title}</h3>
+                <div key={group.title} className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--bg)] p-5 shadow-[var(--shadow-soft)]">
+                  <h3 className="mb-4 text-lg font-semibold text-[var(--text)]">{group.title}</h3>
                   <div className="flex flex-wrap gap-2">
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-slate-700 bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-200"
+                        className="rounded-full border border-[var(--border)] bg-[var(--panel)] px-2.5 py-1.5 text-[11px] font-medium text-[var(--text-soft)]"
                       >
                         {item}
                       </span>
@@ -242,17 +267,17 @@ function App() {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 sm:p-8">
+          <div className="mt-10 rounded-[1.5rem] border border-[rgba(216,141,90,0.25)] bg-[rgba(216,141,90,0.06)] p-6 sm:p-8">
             <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
               <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">GitHub</p>
-                <h3 className="mt-2 text-2xl font-semibold text-white">Code, experiments, and project work.</h3>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--accent-soft)]">GitHub</p>
+                <h3 className="mt-2 text-2xl font-semibold text-[var(--text)]">Code, experiments, and project work.</h3>
               </div>
               <a
                 href={siteConfig.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/30 bg-emerald-500/10 px-4 py-2.5 text-sm font-medium text-emerald-300 transition hover:bg-emerald-500/20"
+                className="inline-flex items-center gap-2 self-start rounded-full border border-[rgba(216,141,90,0.34)] bg-[rgba(216,141,90,0.06)] px-4 py-2.5 text-sm font-medium text-[var(--accent-soft)] transition hover:bg-[rgba(216,141,90,0.12)]"
               >
                 Visit GitHub
                 <ExternalLink className="h-4 w-4" />
@@ -261,7 +286,7 @@ function App() {
           </div>
         </section>
 
-        <section id="journey" className="border-y border-slate-800 bg-slate-900/40 py-20">
+        <section id="journey" className="border-y border-[var(--border)] bg-[var(--panel-soft)] py-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
             <SectionHeading
               eyebrow="Development Journey"
@@ -277,13 +302,13 @@ function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.4 }}
-                  className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5"
+                  className="rounded-[1.5rem] border border-[var(--border)] bg-[var(--bg)] p-5"
                 >
-                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">
+                  <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[rgba(216,141,90,0.1)] text-[var(--accent-soft)]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white">{title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
+                  <h3 className="text-lg font-semibold text-[var(--text)]">{title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--text-soft)]">{text}</p>
                 </motion.div>
               ))}
             </div>
@@ -291,17 +316,17 @@ function App() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-6 sm:p-8">
+          <div className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] p-6 sm:p-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">Resume</p>
-                <h3 className="mt-2 text-2xl font-semibold text-white">A concise overview of my development work and focus.</h3>
+                <p className="text-sm font-medium uppercase tracking-[0.2em] text-[var(--accent-soft)]">Resume</p>
+                <h3 className="mt-2 text-2xl font-semibold text-[var(--text)]">A concise overview of my development work and focus.</h3>
               </div>
               <a
                 href={siteConfig.resumeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-500 px-5 py-3 text-sm font-medium text-slate-950 transition hover:bg-emerald-400"
+                className="inline-flex items-center gap-2 self-start rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[#181510] transition hover:bg-[var(--accent-soft)]"
               >
                 <Download className="h-4 w-4" />
                 Download Resume
@@ -318,35 +343,35 @@ function App() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6">
-              <div className="space-y-5 text-slate-300">
+            <div className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] p-6">
+              <div className="space-y-5 text-[var(--text-soft)]">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Email</p>
-                  <a href={`mailto:${siteConfig.email}`} className="mt-2 inline-block text-lg text-white hover:text-emerald-300">
+                  <p className="text-sm uppercase tracking-[0.2em] text-[var(--muted)]">Email</p>
+                  <a href={`mailto:${siteConfig.email}`} className="mt-2 inline-block text-lg text-[var(--text)] hover:text-[var(--accent-soft)]">
                     {siteConfig.email}
                   </a>
                 </div>
 
                 <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">GitHub</p>
-                  <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-white hover:text-emerald-300">
+                  <p className="text-sm uppercase tracking-[0.2em] text-[var(--muted)]">GitHub</p>
+                  <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-[var(--text)] hover:text-[var(--accent-soft)]">
                     github.com/yourusername
                   </a>
                 </div>
 
                 <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">LinkedIn</p>
-                  <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-white hover:text-emerald-300">
+                  <p className="text-sm uppercase tracking-[0.2em] text-[var(--muted)]">LinkedIn</p>
+                  <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-[var(--text)] hover:text-[var(--accent-soft)]">
                     linkedin.com/in/yourusername
                   </a>
                 </div>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} noValidate className="rounded-2xl border border-slate-800 bg-slate-950/70 p-6">
+            <form onSubmit={handleSubmit} noValidate className="rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] p-6">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-1">
-                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-200">
+                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-[var(--text-soft)]">
                     Name
                   </label>
                   <input
@@ -355,14 +380,14 @@ function App() {
                     type="text"
                     value={formData.name}
                     onChange={updateField}
-                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-3 text-slate-100 outline-none transition focus:border-emerald-400"
+                    className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-3 py-3 text-[var(--text)] outline-none transition focus:border-[var(--accent)]"
                     aria-invalid={Boolean(errors.name)}
                   />
                   {errors.name ? <p className="mt-2 text-sm text-red-400">{errors.name}</p> : null}
                 </div>
 
                 <div className="sm:col-span-1">
-                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-200">
+                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-[var(--text-soft)]">
                     Email
                   </label>
                   <input
@@ -371,7 +396,7 @@ function App() {
                     type="email"
                     value={formData.email}
                     onChange={updateField}
-                    className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-3 text-slate-100 outline-none transition focus:border-emerald-400"
+                    className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-3 py-3 text-[var(--text)] outline-none transition focus:border-[var(--accent)]"
                     aria-invalid={Boolean(errors.email)}
                   />
                   {errors.email ? <p className="mt-2 text-sm text-red-400">{errors.email}</p> : null}
@@ -379,7 +404,7 @@ function App() {
               </div>
 
               <div className="mt-5">
-                <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
+                <label htmlFor="message" className="mb-2 block text-sm font-medium text-[var(--text-soft)]">
                   Message
                 </label>
                 <textarea
@@ -388,7 +413,7 @@ function App() {
                   rows="5"
                   value={formData.message}
                   onChange={updateField}
-                  className="w-full rounded-xl border border-slate-700 bg-slate-900 px-3 py-3 text-slate-100 outline-none transition focus:border-emerald-400"
+                  className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg)] px-3 py-3 text-[var(--text)] outline-none transition focus:border-[var(--accent)]"
                   aria-invalid={Boolean(errors.message)}
                 />
                 {errors.message ? <p className="mt-2 text-sm text-red-400">{errors.message}</p> : null}
@@ -397,14 +422,14 @@ function App() {
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-3 text-sm font-medium text-slate-950 transition hover:bg-emerald-400"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-medium text-[#181510] transition hover:bg-[var(--accent-soft)]"
                 >
                   Send Message
                 </button>
 
                 {status.type !== 'idle' ? (
                   <p
-                    className={status.type === 'success' ? 'text-sm text-emerald-300' : 'text-sm text-red-400'}
+                    className={status.type === 'success' ? 'text-sm text-[var(--accent-soft)]' : 'text-sm text-red-400'}
                     aria-live="polite"
                   >
                     {status.message}

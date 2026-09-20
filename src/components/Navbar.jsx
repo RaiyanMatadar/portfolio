@@ -40,10 +40,10 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        <a href="#home" className="flex items-center gap-3 text-sm font-medium text-slate-100" aria-label="Home">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-emerald-400/30 bg-emerald-500/10 text-base font-semibold text-emerald-300">
+        <a href="#home" className="flex items-center gap-3 text-sm font-medium text-[var(--text)]" aria-label="Home">
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--ring)] bg-[rgba(216,141,90,0.12)] text-base font-semibold text-[var(--accent-soft)]">
             RM
           </span>
           <span>{siteConfig.name}</span>
@@ -56,8 +56,8 @@ export default function Navbar() {
               href={item.href}
               className={`text-sm transition ${
                 activeSection === item.href.slice(1)
-                  ? 'text-emerald-300'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'text-[var(--accent-soft)]'
+                  : 'text-[var(--text-soft)] hover:text-[var(--text)]'
               }`}
             >
               {item.label}
@@ -66,20 +66,20 @@ export default function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub" className="rounded-full border border-slate-700 p-2 text-slate-300 transition hover:border-emerald-400 hover:text-emerald-300">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub" className="rounded-full border border-[var(--border)] bg-[var(--panel)] p-2 text-[var(--text-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]">
             <GitBranch className="h-4 w-4" />
           </a>
-          <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="rounded-full border border-slate-700 p-2 text-slate-300 transition hover:border-emerald-400 hover:text-emerald-300">
+          <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="rounded-full border border-[var(--border)] bg-[var(--panel)] p-2 text-[var(--text-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]">
             <Globe className="h-4 w-4" />
           </a>
-          <a href={`mailto:${siteConfig.email}`} aria-label="Email" className="rounded-full border border-slate-700 p-2 text-slate-300 transition hover:border-emerald-400 hover:text-emerald-300">
+          <a href={`mailto:${siteConfig.email}`} aria-label="Email" className="rounded-full border border-[var(--border)] bg-[var(--panel)] p-2 text-[var(--text-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]">
             <Mail className="h-4 w-4" />
           </a>
         </div>
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 text-slate-200 md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--panel)] text-[var(--text)] md:hidden"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
           onClick={() => setIsOpen((current) => !current)}
@@ -89,13 +89,13 @@ export default function Navbar() {
       </nav>
 
       {isOpen ? (
-        <div className="border-t border-slate-800 bg-slate-950 md:hidden">
+        <div className="border-t border-[var(--border)] bg-[var(--bg)] md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col px-5 py-4 sm:px-6">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="border-b border-slate-800 py-3 text-sm text-slate-200 last:border-0"
+                className="border-b border-[var(--border)] py-3 text-sm text-[var(--text-soft)] last:border-0"
                 onClick={closeMenu}
               >
                 {item.label}

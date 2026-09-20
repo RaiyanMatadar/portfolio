@@ -4,7 +4,7 @@ export const siteConfig = {
   email: import.meta.env.VITE_CONTACT_EMAIL || 'your.email@example.com',
   githubUrl: import.meta.env.VITE_GITHUB_URL || 'https://github.com/yourusername',
   linkedinUrl: import.meta.env.VITE_LINKEDIN_URL || 'https://www.linkedin.com/in/yourusername',
-  resumeUrl: import.meta.env.VITE_RESUME_URL || '/resume.txt',
+  resumeUrl: import.meta.env.VITE_RESUME_URL || '/resume.pdf',
   intro:
     'I build modern, responsive, and scalable web applications using React, Node.js, Express, and MongoDB.',
   about:

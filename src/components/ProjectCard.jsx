@@ -8,68 +8,70 @@ export default function ProjectCard({ project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45 }}
-      className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60 shadow-glow"
+      className="group overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] shadow-[var(--shadow-soft)]"
     >
-      <div className="relative overflow-hidden border-b border-slate-800">
+      <div className="relative overflow-hidden border-b border-[var(--border)]">
         <img
           src={project.image}
           alt={project.title}
-          className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+          className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(17,19,21,0.85)] via-transparent to-transparent" />
       </div>
 
       <div className="p-6">
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-          <div className="flex items-center gap-2">
-            {project.githubUrl ? (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`View ${project.title} on GitHub`}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:border-emerald-400 hover:text-emerald-300"
-              >
-                <GitBranch className="h-4 w-4" />
-              </a>
-            ) : null}
-            {project.liveUrl && project.liveUrl !== '#' ? (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open live demo for ${project.title}`}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:border-emerald-400 hover:text-emerald-300"
-              >
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            ) : null}
-          </div>
+        <div className="mb-4">
+          <h3 className="text-xl font-semibold text-[var(--text)]">{project.title}</h3>
         </div>
 
-        <p className="text-sm leading-7 text-slate-300">{project.description}</p>
+        <p className="text-sm leading-7 text-[var(--text-soft)]">{project.description}</p>
 
         <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs font-medium text-slate-200"
+              className="rounded-full border border-[var(--border)] bg-[var(--panel-soft)] px-2.5 py-1 text-[11px] font-medium text-[var(--text-soft)]"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <ul className="mt-5 space-y-2 text-sm text-slate-300">
+        <ul className="mt-5 space-y-2 text-sm text-[var(--text-soft)]">
           {project.features.map((feature) => (
             <li key={feature} className="flex items-start gap-2">
-              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
               <span>{feature}</span>
             </li>
           ))}
         </ul>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-3 py-2 text-xs font-medium text-[#181510] transition hover:bg-[var(--accent-soft)]"
+            >
+              <ArrowUpRight className="h-3.5 w-3.5" />
+              Live Preview
+            </a>
+          ) : null}
+
+          {project.githubUrl ? (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--panel-soft)] px-3 py-2 text-xs font-medium text-[var(--text-soft)] transition hover:border-[var(--accent)] hover:text-[var(--accent-soft)]"
+            >
+              <GitBranch className="h-3.5 w-3.5" />
+              Source Code
+            </a>
+          ) : null}
+        </div>
       </div>
     </motion.article>
   )

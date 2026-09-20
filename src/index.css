@@ -5,11 +5,27 @@
 @tailwind utilities;
 
 :root {
+  --bg: #111315;
+  --bg-alt: #171a1d;
+  --panel: #1b1f22;
+  --panel-soft: #121618;
+  --card: #1d2125;
+  --border: rgba(232, 220, 205, 0.1);
+  --text: #f3efe9;
+  --text-soft: #d1c9be;
+  --muted: #9b938d;
+  --accent: #d88d5a;
+  --accent-strong: #b96f43;
+  --accent-soft: #ebc5a0;
+  --sage: #94aaa0;
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.26);
+  --ring: rgba(216, 141, 90, 0.38);
+
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   font-weight: 400;
-  color: rgba(248, 250, 252, 0.96);
-  background: #020817;
+  color: var(--text);
+  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,8 +42,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(16, 185, 129, 0.12), transparent 32%),
-    #020817;
+    radial-gradient(circle at top left, rgba(216, 141, 90, 0.12), transparent 26%),
+    linear-gradient(180deg, #111315 0%, #0f1215 100%);
+  color: var(--text);
 }
 
 * {
@@ -44,7 +61,7 @@ img {
 }
 
 ::selection {
-  background: rgba(52, 211, 153, 0.25);
+  background: rgba(216, 141, 90, 0.28);
 }
 
 @media (prefers-reduced-motion: reduce) {

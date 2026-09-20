@@ -1,14 +1,16 @@
 export default function SectionHeading({ eyebrow, title, description }) {
   return (
     <div className="max-w-2xl">
-      <p className="mb-3 text-sm font-medium uppercase tracking-[0.22em] text-emerald-400">
+      <p className="mb-3 text-xs font-medium uppercase tracking-[0.28em] text-[var(--accent-soft)]">
         {eyebrow}
       </p>
-      <h2 className="text-3xl font-semibold tracking-tight text-slate-50 sm:text-4xl">
+      <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[var(--text)] sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base text-slate-300 sm:text-lg">{description}</p>
+        <p className="mt-4 text-base leading-7 text-[var(--text-soft)] sm:text-lg">
+          {description}
+        </p>
       ) : null}
     </div>
   )
