@@ -394,14 +394,14 @@ function App() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-[var(--muted)]">GitHub</p>
                   <a href={siteConfig.githubUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-[var(--text)] hover:text-[var(--accent-soft)]">
-                    github.com/yourusername
+                    {siteConfig.githubUrl.replace('https://', '').replace('http://', '')}
                   </a>
                 </div>
 
                 <div>
                   <p className="text-sm uppercase tracking-[0.2em] text-[var(--muted)]">LinkedIn</p>
                   <a href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer" className="mt-2 inline-block text-lg text-[var(--text)] hover:text-[var(--accent-soft)]">
-                    linkedin.com/in/yourusername
+                    {siteConfig.linkedinUrl.replace('https://', '').replace('http://', '')}
                   </a>
                 </div>
               </div>
