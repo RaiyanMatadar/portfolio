@@ -1,14 +1,19 @@
-import { ArrowUpRight, GitBranch } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, ChevronDown, GitBranch } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function ProjectCard({ project }) {
+  const [expanded, setExpanded] = useState(false)
+  const visibleFeatures = expanded ? project.features : project.features.slice(0, 4)
+  const hasMoreFeatures = project.features.length > 4
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45 }}
-      className="group overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] shadow-[var(--shadow-soft)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-[var(--border)] bg-[var(--panel)] shadow-[var(--shadow-soft)]"
     >
       <div className="relative overflow-hidden border-b border-[var(--border)]">
         <img
@@ -20,7 +25,7 @@ export default function ProjectCard({ project }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(17,19,21,0.85)] via-transparent to-transparent" />
       </div>
 
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <div className="mb-4">
           <h3 className="text-xl font-semibold text-[var(--text)]">{project.title}</h3>
         </div>
@@ -38,16 +43,30 @@ export default function ProjectCard({ project }) {
           ))}
         </div>
 
-        <ul className="mt-5 space-y-2 text-sm text-[var(--text-soft)]">
-          {project.features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-5 flex-1">
+          <ul className="space-y-2 text-sm text-[var(--text-soft)]">
+            {visibleFeatures.map((feature) => (
+              <li key={feature} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" aria-hidden="true" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
+          {hasMoreFeatures ? (
+            <button
+              type="button"
+              onClick={() => setExpanded((current) => !current)}
+              aria-expanded={expanded}
+              className="mt-3 inline-flex items-center gap-2 text-xs font-medium text-[var(--accent-soft)] transition hover:text-[var(--text)]"
+            >
+              {expanded ? 'Show less' : 'Show more'}
+              <ChevronDown className={`h-3.5 w-3.5 transition ${expanded ? 'rotate-180' : ''}`} />
+            </button>
+          ) : null}
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3 pt-1">
           {project.liveUrl ? (
             <a
               href={project.liveUrl}

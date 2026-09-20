@@ -1,5 +1,4 @@
-```js
-export const projects = [
+const projects = [
   {
     title: 'Chef Claude',
     description:
@@ -13,8 +12,8 @@ export const projects = [
       'LLaMA 3.3-70B',
       'React-Markdown',
     ],
-    githubUrl: '',
-    liveUrl: '',
+    githubUrl: 'https://github.com/RaiyanMatadar/chefClaude',
+    liveUrl: 'https://chef-claude-two-delta.vercel.app/',
     featured: true,
     features: [
       'AI-powered recipe generation from user-provided ingredients',
@@ -40,8 +39,8 @@ export const projects = [
       'JavaScript',
       'CSS3',
     ],
-    githubUrl: '',
-    liveUrl: '',
+    githubUrl: 'https://github.com/RaiyanMatadar/MemeGenrator',
+    liveUrl: 'https://meme-genrator-nine.vercel.app/',
     featured: true,
     features: [
       'Access to 1,000+ meme templates through the Imgflip API',
@@ -76,8 +75,8 @@ export const projects = [
       'Multer',
       'Cloudinary',
     ],
-    githubUrl: '',
-    liveUrl: '',
+    githubUrl: 'https://github.com/RaiyanMatadar/payslipSync',
+    liveUrl: 'https://client-nu-coral.vercel.app/login',
     featured: true,
     features: [
       'Company and employee management',
@@ -95,4 +94,6 @@ export const projects = [
     ],
   },
 ]
-```
+
+export { projects }
+export default projects
