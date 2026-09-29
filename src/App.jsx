@@ -196,6 +196,7 @@ function App() {
                   </a>
                 </div>
 
+                
                 <div className="mt-10 flex flex-wrap items-center gap-3 text-sm text-[var(--text-soft)]">
                   {socialLinkItems.map(({ label, href, icon: Icon }) => (
                     <a
