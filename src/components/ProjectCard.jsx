@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { ArrowUpRight, ChevronDown, GitBranch } from "lucide-react";
+import { ArrowUpRight, GitBranch } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ProjectCard({ project }) {
-  const [expanded, setExpanded] = useState(false);
-  const hasMoreFeatures = project.features.length > 4;
 
   return (
     <motion.article

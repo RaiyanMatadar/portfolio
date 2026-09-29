@@ -14,15 +14,6 @@ const projects = [
     githubUrl: 'https://github.com/RaiyanMatadar/chefClaude',
     liveUrl: 'https://chef-claude-two-delta.vercel.app/',
     featured: true,
-    features: [
-      'AI-powered recipe generation from user-provided ingredients',
-      'Reusable React components for application structure',
-      'React Hooks for ingredient management and application state',
-      'Loading states and conditional rendering',
-      'Formatted AI responses using React-Markdown',
-      'Environment variables for secure API configuration',
-      'Vite configuration for fast development and production builds',
-    ],
   },
 
   {
@@ -40,17 +31,6 @@ const projects = [
     githubUrl: 'https://github.com/RaiyanMatadar/MemeGenrator',
     liveUrl: 'https://meme-genrator-nine.vercel.app/',
     featured: true,
-    features: [
-      'Access to 1,000+ meme templates through the Imgflip API',
-      'Dynamic text and template selection',
-      'Random meme image generation',
-      'API data fetching with useEffect',
-      'State management with useState',
-      'Reusable React components',
-      'Responsive mobile-friendly layouts',
-      'Custom meme typography and responsive CSS styling',
-      'ESLint for development and code quality',
-    ],
   },
 
   {
@@ -75,20 +55,6 @@ const projects = [
     githubUrl: 'https://github.com/RaiyanMatadar/payslipSync',
     liveUrl: 'https://client-nu-coral.vercel.app/',
     featured: true,
-    features: [
-      'Company and employee management',
-      'Salary template and payslip management',
-      'Protected REST APIs using Node.js and Express.js',
-      'MongoDB and Mongoose for database management',
-      'JWT-based administrator authentication',
-      'Dynamic earnings, deductions, and net salary calculations',
-      'Salary amounts converted into words',
-      'PDF payslip generation using PDFKit',
-      'Bulk payslip ZIP exports using Archiver',
-      'Company logo uploads using Multer and Cloudinary',
-      'Reusable React components for administrative interfaces',
-      'Responsive interfaces for companies, employees, templates, and payslips',
-    ],
   },
 ]
 
