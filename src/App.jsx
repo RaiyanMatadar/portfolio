@@ -300,7 +300,7 @@ function App() {
             description="These projects illustrate how I build user-facing interfaces along with the application logic behind them."
           />
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6 xl:grid-cols-3">
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}
